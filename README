@@ -1,0 +1,6 @@
+The Timely Project!
+
+We'll keep all code for this project in the same repo.
+
+/timelyweb      This is the Timely Rails app
+/timelymator    This is the Timely Schedule Generator Java app
