@@ -4,5 +4,8 @@ class Person < ActiveRecord::Base
   devise :rememberable, :trackable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :firstname, :lastname, :email, :remember_me
+
+  validates_presence_of :firstname, :lastname
+  validates_uniqueness_of :email, :case_sensitive => false
 end
