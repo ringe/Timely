@@ -46,6 +46,7 @@ Timelyweb::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # ActionMailer Config
+  config.action_mailer.default_url_options = { :host => 'timely.rin.no' }
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
