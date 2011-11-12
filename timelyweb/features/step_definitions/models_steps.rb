@@ -36,10 +36,6 @@ When /^(\d+) events take place at the same time$/ do |n|
   end
 end
 
-Then /^Room should have (\d+) conflict$/ do |n|
-  @room.conflicts.should == n.to_i
-end
-
 Then /^Room should have (\d+) events overlapping$/ do |arg1|
   pending # express the regexp above with the code you wish you had
 end

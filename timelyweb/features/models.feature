@@ -9,5 +9,4 @@ Feature: Models
     When 2 accessories are placed there
     When 2 events take place at the same time
     Then Room should have 2 Accessories
-    And Room should have 1 conflict
     And Room should have 2 events overlapping

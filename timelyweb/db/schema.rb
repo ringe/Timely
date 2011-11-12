@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20111111091304) do
     t.integer  "parent_id"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

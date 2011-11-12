@@ -7,8 +7,9 @@ class CreateEvents < ActiveRecord::Migration
       t.boolean :is_private
       t.integer :override_id
       t.integer :parent_id
-      t.datetime :start_time
-      t.datetime :end_time
+      t.datetime :start
+      t.datetime :end
+      t.string :name
 
       t.timestamps
     end
