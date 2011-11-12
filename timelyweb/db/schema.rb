@@ -11,9 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111109151023) do
+ActiveRecord::Schema.define(:version => 20111111091304) do
+
+  create_table "accessories", :force => true do |t|
+    t.integer  "room_id"
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "subject_id"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.boolean  "is_private"
+    t.integer  "override_id"
+    t.integer  "parent_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events_rooms", :id => false, :force => true do |t|
+    t.integer "event_id", :null => false
+    t.integer "room_id",  :null => false
+  end
+
+  add_index "events_rooms", ["event_id", "room_id"], :name => "index_events_rooms_on_event_id_and_room_id", :unique => true
 
   create_table "people", :force => true do |t|
+    t.string   "remember_token"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",        :default => 0
     t.datetime "current_sign_in_at"
@@ -26,9 +55,22 @@ ActiveRecord::Schema.define(:version => 20111109151023) do
     t.datetime "updated_at"
     t.string   "firstname"
     t.string   "lastname"
+    t.boolean  "is_student"
+    t.boolean  "is_teacher"
+    t.boolean  "is_planner"
   end
 
   add_index "people", ["authentication_token"], :name => "index_people_on_authentication_token", :unique => true
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true
+
+  create_table "rooms", :force => true do |t|
+    t.string   "code"
+    t.string   "category"
+    t.integer  "capacity"
+    t.integer  "capacity_exam"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

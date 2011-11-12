@@ -33,6 +33,7 @@ gem 'devise'
 gem 'cancan'
 
 # Specification and testing
+gem 'rspec', :group => [:development, :test]
 gem 'rspec-rails', :group => [:development, :test]
 
 # Testing
@@ -41,6 +42,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'capybara-webkit'
 end
 
 # To use ActiveModel has_secure_password
