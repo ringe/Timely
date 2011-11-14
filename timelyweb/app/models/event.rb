@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   include Comparable
 
   # An Event is owned by a Person or a Group
-  belongs_to :owner, plymorphic: true, readonly: true
+  belongs_to :owner, polymorphic: true, readonly: true
 
   # An Event belongs to a Subject
   belongs_to :subject

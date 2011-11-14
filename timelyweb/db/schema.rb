@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111111091304) do
+ActiveRecord::Schema.define(:version => 20111112181520) do
 
   create_table "accessories", :force => true do |t|
     t.integer  "room_id"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20111111091304) do
     t.boolean  "is_private"
     t.integer  "override_id"
     t.integer  "parent_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "start"
+    t.datetime "end"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -41,6 +41,21 @@ ActiveRecord::Schema.define(:version => 20111111091304) do
   end
 
   add_index "events_rooms", ["event_id", "room_id"], :name => "index_events_rooms_on_event_id_and_room_id", :unique => true
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups_people", :id => false, :force => true do |t|
+    t.integer "group_id",  :null => false
+    t.integer "person_id", :null => false
+  end
+
+  add_index "groups_people", ["group_id", "person_id"], :name => "index_groups_people_on_group_id_and_person_id", :unique => true
 
   create_table "people", :force => true do |t|
     t.string   "remember_token"
@@ -59,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20111111091304) do
     t.boolean  "is_student"
     t.boolean  "is_teacher"
     t.boolean  "is_planner"
+    t.string   "private_email"
+    t.string   "phone"
   end
 
   add_index "people", ["authentication_token"], :name => "index_people_on_authentication_token", :unique => true
@@ -70,6 +87,42 @@ ActiveRecord::Schema.define(:version => 20111111091304) do
     t.integer  "capacity"
     t.integer  "capacity_exam"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subjects", :force => true do |t|
+    t.integer  "term_id"
+    t.integer  "person_id"
+    t.integer  "teacher_group_id"
+    t.integer  "student_group_id"
+    t.string   "name"
+    t.string   "code"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "term_settings", :force => true do |t|
+    t.integer  "term_id"
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "terms", :force => true do |t|
+    t.string   "name"
+    t.date     "start"
+    t.date     "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_settings", :force => true do |t|
+    t.integer  "person_id"
+    t.string   "name"
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
