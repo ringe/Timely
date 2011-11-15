@@ -31,7 +31,7 @@ end
 When /^(\d+) events take place at the same time$/ do |n|
   i=10.minutes
   n.to_i.times do
-    @room.events << Event.create!(start_time: Time.now+i, end_time: Time.now+i+1.hour)
+    @room.events << Event.create!(start: Time.now+i, end: Time.now+i+1.hour)
     i+=10.minutes
   end
 end

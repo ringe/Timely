@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(:version => 20111112181520) do
   add_index "events_rooms", ["event_id", "room_id"], :name => "index_events_rooms_on_event_id_and_room_id", :unique => true
 
   create_table "groups", :force => true do |t|
+    t.string   "type"
     t.string   "name"
     t.integer  "parent_id"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,15 +67,13 @@ ActiveRecord::Schema.define(:version => 20111112181520) do
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "firstname"
-    t.string   "lastname"
-    t.boolean  "is_student"
-    t.boolean  "is_teacher"
-    t.boolean  "is_planner"
     t.string   "private_email"
     t.string   "phone"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "people", ["authentication_token"], :name => "index_people_on_authentication_token", :unique => true
@@ -87,6 +85,14 @@ ActiveRecord::Schema.define(:version => 20111112181520) do
     t.integer  "capacity"
     t.integer  "capacity_exam"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "school_terms", :force => true do |t|
+    t.string   "name"
+    t.date     "start"
+    t.date     "end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -107,14 +113,6 @@ ActiveRecord::Schema.define(:version => 20111112181520) do
     t.integer  "term_id"
     t.string   "name"
     t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "terms", :force => true do |t|
-    t.string   "name"
-    t.date     "start"
-    t.date     "end"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

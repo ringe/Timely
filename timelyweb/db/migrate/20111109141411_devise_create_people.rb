@@ -12,6 +12,12 @@ class DeviseCreatePeople < ActiveRecord::Migration
       t.token_authenticatable
 
       t.string :email
+      t.string :private_email
+      t.string :phone
+      t.string :firstname
+      t.string :lastname
+      t.string :type
+      
 
       t.timestamps
     end

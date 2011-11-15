@@ -1,6 +1,6 @@
-class CreateTerms < ActiveRecord::Migration
+class CreateSchoolTerms < ActiveRecord::Migration
   def change
-    create_table :terms do |t|
+    create_table :school_terms do |t|
       t.string :name
       t.date :start
       t.date :end
