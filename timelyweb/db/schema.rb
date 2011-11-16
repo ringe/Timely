@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20111112181520) do
     t.datetime "updated_at"
   end
 
-  create_table "events_rooms", :force => true do |t|
+  create_table "events_rooms", :id => false, :force => true do |t|
     t.integer "event_id", :null => false
     t.integer "room_id",  :null => false
   end
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20111112181520) do
     t.datetime "updated_at"
   end
 
-  create_table "groups_people", :force => true do |t|
+  create_table "groups_people", :id => false, :force => true do |t|
     t.integer "group_id",  :null => false
     t.integer "person_id", :null => false
   end
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(:version => 20111112181520) do
   end
 
   create_table "subjects", :force => true do |t|
-    t.integer  "term_id"
+    t.integer  "school_term_id"
     t.integer  "person_id"
     t.integer  "teacher_group_id"
     t.integer  "student_group_id"
@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(:version => 20111112181520) do
   end
 
   create_table "term_settings", :force => true do |t|
-    t.integer  "term_id"
+    t.integer  "school_term_id"
     t.string   "name"
     t.string   "value"
     t.datetime "created_at"

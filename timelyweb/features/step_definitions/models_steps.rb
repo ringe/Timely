@@ -41,19 +41,25 @@ Given /^The SchoolTerm have (\d+) Subjects$/ do |n|
     @term.subjects << Subject.create!()
   end
 end
-
+ 
 Then /^The SchoolTerm should have (\d+) TermSettings and (\d+) Subjects$/ do |ts, s|
-  assert @school.term_settings.count.should == ts.to_i and @school.subjects.count.should == s.to_i
+  assert @term.term_settings.count.should == ts.to_i and @term.subjects.count.should == s.to_i
 end
 
-Given /^The responsible Person of "([^"]*)" is "([^"]*)"$/ do |subject, person|
+Given /^"([^"]*)" is responsible for "([^"]*)"$/ do |person, subject|
   fname,lname = person.split
-  teacher = Person.create!(:firstname => fname, :lastname => lname)
-  Subject.create!(:name => subject, :person => teacher)
+  teacher = Teacher.create(:firstname => fname, :lastname => lname)
+  @subject = Subject.where(:name => subject).first
+  if !@subject.nil?
+    @subject.person = teacher
+    @subject.save!
+  else
+    @subject = Subject.create!(:name => subject, :person => teacher)
+  end
 end
 
 Given /^"([^"]*)" has (\d+) Teachers$/ do |subject, n|
-  @subject = Subject.find_by_name(subject)
+  @subject = Subject.where(:name => subject).first
   @subject.teacher_group = TeacherGroup.create!
   @subject.save!
   n.to_i.times do
@@ -69,19 +75,44 @@ Given /^(\d+) Students in "([^"]*)"$/ do |n, name|
 end
 
 Given /^"([^"]*)" follow the Subject "([^"]*)"$/ do |group, subject|
-  s = Subject.find_by_name(subject)
-  s.student_group = Group.find_by_name(group)
+  s = Subject.where({:name => subject}).first
+  s.student_group = Group.where({:name => group}).first
   s.save!
 end
 
-Then /^The Person "([^"]*)" should have the subject "([^"]*)"$/ do |person, subject|
-  fname,lname = person.split
-  p=Person.find_by_firstname_and_lastname(fname, lname)
-  assert p.subjects.include?(Subject.find_by_name(subject))
+Given /^A Subject, "([^"]*)"$/ do |name|
+  @subject = Subject.create!(:name => name)
 end
 
-Then /^"([^"]*)" should have (\d+) Teachers and (\d+) Students$/ do |subject, teachers, students|
-  s = Subject.find_by_name(subject)
+Then /^"([^"]*)" should be under "([^"]*)", have (\d+) Teachers and (\d+) Students$/ do |subject, person, teachers, students|
+  s = Subject.where({:name => subject}).first
+  assert ("#{s.person.firstname} #{s.person.lastname}").should == person
   assert s.teacher_group.people.count.should == teachers.to_i
   assert s.student_group.people.count.should == students.to_i
+end
+
+Then /^I should have (\d+) Groups$/ do |n|
+  assert Group.count.should == n.to_i
+end
+
+Then /^I should have (\d+) StudentGroup with (\d+) Students$/ do |groups, students|
+  sgs = StudentGroup.all
+  assert sgs.size.should == groups.to_i
+  sgs.each do |sg|
+    assert sg.people.size.should == students.to_i
+    sg.people.each do |student|
+      assert student.class.should == Student
+    end
+  end
+end
+
+Then /^I should have (\d+) TeacherGroup with (\d+) Teachers$/ do |groups, teachers|
+  tgs = TeacherGroup.all
+  assert tgs.size.should == groups.to_i
+  tgs.each do |tg|
+    assert tg.people.size.should == teachers.to_i
+    tg.people.each do |teacher|
+      assert teacher.class.should == Teacher
+    end
+  end
 end

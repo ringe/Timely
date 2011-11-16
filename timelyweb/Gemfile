@@ -18,7 +18,7 @@ end
 
 # Views candy
 gem 'jquery-rails'
-gem 'will_paginate'
+#gem 'will_paginate'
 #gem 'haml'
 #group :development do
 #  gem 'hpricot'
@@ -45,9 +45,11 @@ group :test do
   gem 'capybara'
   gem 'spork', '~> 0.9.0.rc9'
   gem 'rb-fsevent'
-  gem 'guard-spork'
-  gem 'guard-rspec'
-  gem 'guard-cucumber'
+  gem 'watchr'
+  # Windows forking doesn't work...
+  #em 'guard-spork', :git => 'git://github.com/guard/guard-spork.git'
+  #gem 'guard-rspec'
+  #gem 'guard-cucumber'
   #gem 'capybara-webkit'
 end
 

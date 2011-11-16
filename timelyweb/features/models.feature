@@ -17,16 +17,17 @@ Feature: Models
     Then The SchoolTerm should have 2 TermSettings and 3 Subjects
     
   Scenario: Subject
-    Given The responsible Person of "Programming in Ruby" is "Nils Skulbru"
+    Given A Subject, "Programming in Ruby"
+    Given "Nils Skulbru" is responsible for "Programming in Ruby" 
     Given "Programming in Ruby" has 2 Teachers
     Given 25 Students in "Yvei 2009"
     Given "Yvei 2009" follow the Subject "Programming in Ruby"
-    Then The Person "Nils Skulbru" should have the subject "Programming in Ruby"
-    And "Programming in Ruby" should have 2 Teachers and 25 Students
+    Then "Programming in Ruby" should be under "Nils Skulbru", have 2 Teachers and 25 Students
 
   Scenario: Groups
+    Given A Subject, "The Subject"
     Given 4 Students in "Yvei 2009"
-    Given "The subject" has 4 Teachers
+    Given "The Subject" has 5 Teachers
     Then I should have 2 Groups
     And I should have 1 StudentGroup with 4 Students
-    And I should have 1 TeacherGroup with 4 Teachers
+    And I should have 1 TeacherGroup with 5 Teachers
