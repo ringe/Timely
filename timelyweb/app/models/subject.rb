@@ -3,13 +3,13 @@ class Subject < ActiveRecord::Base
   belongs_to :term
 
   # There is one responsible Person per Subject
-  belongs_to :responsible, class_name: "Person"
+  belongs_to :person
 
   # A Subject can have several teachers
-  belongs_to :teachers, class_name: "Group", foreign_key: "teacher_group_id"
+  belongs_to :teacher_group, class_name: "Group"
 
   # A Subject belongs to a Group of students
-  belongs_to :students, class_name: "Group", foreign_key: "student_group_id"
+  belongs_to :student_group, class_name: "Group"
 
   # Subject has many Events
   has_many :events

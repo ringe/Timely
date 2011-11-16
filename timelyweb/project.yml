@@ -1,0 +1,16 @@
+---
+# This is the class path where you want the top-level generated code to go.
+databases_namespace: com.rapleaf.jack.timely
+# Here, we define each of the separate databases for which Jack should 
+# generate code. Each database is roughly equivalent to a Rails project.
+databases: 
+  -
+    # The root namespace for this database. It's nice, but not required, to
+    # have this be a subpackage of the 'databases_namespace'.
+    root_namespace: com.rapleaf.jack.timely.database_1
+    # What do you want to call this database? Leave out the "_production". 
+    db_name: Database1
+    # The path to the schema.rb in your Rails project.
+    schema_rb: db/schema.rb
+    # The path to the app/models dir in your Rails project.
+    models: app/models
