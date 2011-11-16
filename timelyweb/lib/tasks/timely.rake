@@ -6,7 +6,7 @@ namespace :timely do
     Rake::Task['db:migrate'].invoke
   end
   
-  desc "Prepare autotesting"
+  desc "Watch for file changes, run test on change"
   task :watch do
     sh %{bundle exec watchr .watchr}
   end
