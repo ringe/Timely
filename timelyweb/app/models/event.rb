@@ -19,9 +19,9 @@ class Event < ActiveRecord::Base
 
   # Compare events based on start time
   def <=>(event)
-    if self.start_time < event.start_time
+    if self.start < event.start
       -1
-    elsif self.start_time > event.start_time
+    elsif self.start > event.start
       1
     else
       0
@@ -30,8 +30,8 @@ class Event < ActiveRecord::Base
 
   # Check to see if an event overlaps with this one, time-wise
   def time_overlap(event)
-    (event.start_time < self.end_time && event.start_time > self.start_time) or
-    (self.start_time < event.end_time && self.start_time > event.start_time)
+    (event.start < self.end && event.start > self.start) or
+    (self.start < event.end && self.start > event.start)
   end
   alias_method :&, :time_overlap
 end

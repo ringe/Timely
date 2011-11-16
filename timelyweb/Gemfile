@@ -40,8 +40,14 @@ gem 'rspec-rails', :group => [:development, :test]
 group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'cucumber'
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'spork', '~> 0.9.0.rc9'
+  gem 'rb-fsevent'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
   #gem 'capybara-webkit'
 end
 

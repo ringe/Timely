@@ -10,7 +10,9 @@ class Person < ActiveRecord::Base
   has_many :events, as: "owner"
 
   has_many :user_settings
+  
+  has_many :subjects
 
-  validates_presence_of :firstname, :lastname
+  #validates_presence_of :firstname, :lastname
   validates_uniqueness_of :email, :case_sensitive => false
 end
