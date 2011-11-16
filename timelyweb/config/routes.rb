@@ -1,4 +1,8 @@
 Timelyweb::Application.routes.draw do
+  get "students/index"
+  match "students" => "students#index"
+  match "schedule" => "events#index"
+
   get "events/index"
 
   devise_for :people

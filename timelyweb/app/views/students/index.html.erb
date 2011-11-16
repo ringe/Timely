@@ -1,0 +1,5 @@
+<h1>Students#index</h1>
+<p><%= @students.size %> students</p>
+<% @students.each do |s| %>
+  <%= s.firstname + ", " %>
+<% end %>
