@@ -55,11 +55,11 @@ def trap_quit
 end
 
 # Watchr rules ###############################################################
-watch('spec/spec_helper\.rb') { run_all_specs }
-watch('spec/support/.*') { run_all_specs }
-watch('spec/.*_spec\.rb') { |m| run_spec m[0] }
-watch('app/.*\.rb') { |m| related_specs(m[0]).map { |s| run_spec s } }
-watch('lib/.*\.rb') { |m| related_specs(m[0]).map { |s| run_spec s } }
+#watch('spec/spec_helper\.rb') { run_all_specs }
+#watch('spec/support/.*') { run_all_specs }
+#watch('spec/.*_spec\.rb') { |m| run_spec m[0] }
+#watch('app/.*\.rb') { |m| related_specs(m[0]).map { |s| run_spec s } }
+#watch('lib/.*\.rb') { |m| related_specs(m[0]).map { |s| run_spec s } }
 watch('features/support/.*') { |m| run_all_features }
 watch('features/.*\.feature') { |m| run_feature m[0] }
 watch('features/step_definitions/.*\.rb') { |m| run_feature m[0].sub('/step_definitions','').sub('_steps','').sub('.rb', '.feature') }
