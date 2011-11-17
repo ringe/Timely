@@ -64,7 +64,7 @@ When /^i extract the Rooms from the file$/ do
       i = 0
       p = 2
       steringue = ""
-      while i < row[1]
+      while i < row[1].to_i
         steringue += row[p]
         steringue += ", "
         p+=1
@@ -82,5 +82,5 @@ When /^i assign Accessories to the correct Rooms$/ do
 end
 
 Then /^I should have (\d+) Rooms with Accessories$/ do |k|
-  assert Accessories.count.should == k.to_i
+  assert Accessory.count.should == k.to_i
 end
