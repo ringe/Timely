@@ -7,9 +7,9 @@ databases:
   -
     # The root namespace for this database. It's nice, but not required, to
     # have this be a subpackage of the 'databases_namespace'.
-    root_namespace: javadb.timely.database_1
+    root_namespace: javadb.timely.JavaDB
     # What do you want to call this database? Leave out the "_production". 
-    db_name: Database1
+    db_name: JavaDB
     # The path to the schema.rb in your Rails project.
     schema_rb: db/schema.rb
     # The path to the app/models dir in your Rails project.
