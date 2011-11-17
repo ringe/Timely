@@ -1,0 +1,3 @@
+[submodule "Jack"]
+	path = Jack
+	url = git@github.com:ringe/jack.git
