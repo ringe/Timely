@@ -67,8 +67,8 @@ When /^i extract the Rooms from the file$/ do
       while i < row[1]
         steringue += row[p]
         steringue += ", "
-        p+=
-        i+=
+        p+=1
+        i+=1
       end
       romacc.room_id = row[0]
       romacc.value = steringue
