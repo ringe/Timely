@@ -20,7 +20,7 @@ When /^I convert the content to rooms$/ do
       else
         r = Room.new
         #r.id = row[0]
-        r.code = row[1]
+        r.code = row[0]
         r.category = row[15]
         r.capacity = row[7].to_i
         r.capacity_exam = row[6].to_i
@@ -53,4 +53,34 @@ end
 
 Then /^I should have (\d+) students$/ do |k|
   assert Student.count.should == k.to_i
+end
+
+When /^i extract the Rooms from the file$/ do
+  CSV.foreach(@file, :col_sep => ";") do |row|
+    if row[0] == "Rom-ID"
+      #SKIP LULZ
+    else
+      romacc = Accessory.new
+      i = 0
+      p = 2
+      steringue = ""
+      while i < row[1]
+        steringue += row[p]
+        steringue += ", "
+        p+=
+        i+=
+      end
+      romacc.room_id = row[0]
+      romacc.value = steringue
+      romacc.save!
+    end
+  end
+end
+
+When /^i assign Accessories to the correct Rooms$/ do
+  # Already donsies!
+end
+
+Then /^I should have (\d+) Rooms with Accessories$/ do |k|
+  assert Accessories.count.should == k.to_i
 end
