@@ -86,13 +86,26 @@ Then /^I should have (\d+) Rooms with Accessories$/ do |k|
 end
 
 When /^I read the contents of Teachers$/ do
-  pending # express the regexp above with the code you wish you had
+  #not necesary?
 end
 
 When /^I convert the content to Teachers$/ do
-  pending # express the regexp above with the code you wish you had
+  CSV.foreach(@file, :col_sep => ";") do |row|
+      if row[0] == "personlopenr"
+        #SKIP LULZ
+      else
+        r = Teacher.new
+        r.id = row[0]
+        r.email = row[7]
+        r.private_email = row[8]
+        r.phone = row[11]
+        r.firstname = row[5]
+        r.lastname = row[4]
+        r.save!
+      end
+    end
 end
 
-Then /^I should have (\d+) teachers$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then /^I should have (\d+) teachers$/ do |s|
+assert Teacher.count.should == s.to_i
 end
