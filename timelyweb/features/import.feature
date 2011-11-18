@@ -20,3 +20,9 @@ Feature: Import
 		When i extract the Rooms from the file
 		And i assign Accessories to the correct Rooms
 		Then I should have 3 Rooms with Accessories
+		
+	Scenario: Import Teachers
+		Given the file "spec/import/FAGLEARERTABELL_kunFS.csv"
+		When I read the contents of Teachers
+		And I convert the content to Teachers
+		Then I should have 3 teachers

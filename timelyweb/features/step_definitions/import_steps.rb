@@ -84,3 +84,15 @@ end
 Then /^I should have (\d+) Rooms with Accessories$/ do |k|
   assert Accessory.count.should == k.to_i
 end
+
+When /^I read the contents of Teachers$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I convert the content to Teachers$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should have (\d+) teachers$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
