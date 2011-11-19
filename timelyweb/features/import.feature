@@ -26,3 +26,9 @@ Feature: Import
 		When I read the contents of Teachers
 		And I convert the content to Teachers
 		Then I should have 3 teachers
+		
+	Scenario: Import Classes
+		Give the file "spec/import/KLASSETABELL.csv"
+		When I read the contents of the file
+		And I convert the content to Classes
+		Then I should have 3 Classes

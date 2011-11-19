@@ -109,3 +109,20 @@ end
 Then /^I should have (\d+) teachers$/ do |s|
 assert Teacher.count.should == s.to_i
 end
+
+When /^I convert the content to Classes$/ do
+  CSV.foreach(@file, :col_sep => ";") do |row|
+    if row[0] == "klasse_id"
+      #SKIP LULZ
+    else
+      r = Group.new
+      r.name = row[0]
+      r.type = row[2]
+      r.save!
+    end
+  end
+end
+
+Then /^I should have (\d+) Classes$/ do |n|
+  assert Group.count.should == n.to_i
+end
