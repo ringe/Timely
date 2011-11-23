@@ -125,3 +125,23 @@ end
 Then /^I should have (\d+) Classes$/ do |n|
   assert Group.count.should == n.to_i
 end
+
+When /^I assign Students to Groups$/ do
+  CSV.foreach(@file, :col_sep => ";") do |row|
+    if row[0] == "Klasse-ID"
+      #SKIPZ!
+    else
+      n = 0
+      group = Group.where(id: row[0])
+      while n < row[1].to_i
+        gp = Student.where(id: row[n+1].to_i);
+        gp.groups << group
+        n += 1
+      end
+    end
+  end
+end
+
+Then /^I should have (\d+) different Student in (\d+) Groups$/ do |students, groups|
+  pending
+end

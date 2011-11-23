@@ -12,6 +12,8 @@ class Person < ActiveRecord::Base
   has_many :user_settings
   
   has_many :subjects
+  
+  has_and_belongs_to_many :groups
 
   validates_presence_of :firstname, :lastname
   validates_uniqueness_of :email, :case_sensitive => false
