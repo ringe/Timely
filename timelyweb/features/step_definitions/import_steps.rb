@@ -115,9 +115,8 @@ When /^I convert the content to Classes$/ do
     if row[0] == "klasse_id"
       #SKIP LULZ
     else
-      r = Group.new
+      r = StudentGroup.new
       r.name = row[0]
-      r.type = row[2]
       r.save!
     end
   end
