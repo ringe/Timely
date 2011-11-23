@@ -34,7 +34,7 @@ Feature: Import
 		Then I should have 3 Classes
 		
 	Scenario: Assign Students to Groups
-		Given the file "spec/import/STUDENTTABELL_fs.csv"
+		Given the file "spec/import/KLASSESTUDENTER.csv"
 		When I read the contents of the file
 		And I assign Students to Groups
 		Then I should have 1 different Student in 3 Groups
