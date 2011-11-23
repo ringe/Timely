@@ -38,3 +38,4 @@ Feature: Import
 		When I read the contents of the file
 		And I assign Students to Groups
 		Then I should have 1 different Student in 3 Groups
+		
