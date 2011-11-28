@@ -97,6 +97,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.0.3)
+    mysql2 (0.3.7)
     nokogiri (1.5.0)
     nokogiri (1.5.0-x86-mingw32)
     orm_adapter (0.0.5)
@@ -212,6 +213,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   jquery-rails
+  mysql2
   rails (= 3.1.1)
   rb-fsevent
   rspec
