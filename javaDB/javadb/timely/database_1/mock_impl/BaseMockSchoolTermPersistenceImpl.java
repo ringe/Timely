@@ -37,7 +37,7 @@ public class BaseMockSchoolTermPersistenceImpl extends AbstractMockDatabaseModel
     this.databases = databases;
   }
 
-  @Override
+
   public ModelWithId create(Map<Enum, Object> fieldsMap) throws IOException {
     String name = (String) fieldsMap.get(SchoolTerm._Fields.name);
     Long start = (Long) fieldsMap.get(SchoolTerm._Fields.start);

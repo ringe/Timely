@@ -37,7 +37,7 @@ public class BaseMockRoomPersistenceImpl extends AbstractMockDatabaseModel<Room>
     this.databases = databases;
   }
 
-  @Override
+
   public ModelWithId create(Map<Enum, Object> fieldsMap) throws IOException {
     String code = (String) fieldsMap.get(Room._Fields.code);
     String category = (String) fieldsMap.get(Room._Fields.category);

@@ -37,7 +37,7 @@ public class BaseMockGroupPersistenceImpl extends AbstractMockDatabaseModel<Grou
     this.databases = databases;
   }
 
-  @Override
+
   public ModelWithId create(Map<Enum, Object> fieldsMap) throws IOException {
     String type = (String) fieldsMap.get(Group._Fields.type);
     String name = (String) fieldsMap.get(Group._Fields.name);

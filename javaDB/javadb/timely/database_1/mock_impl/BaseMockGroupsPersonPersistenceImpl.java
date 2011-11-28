@@ -37,8 +37,7 @@ public class BaseMockGroupsPersonPersistenceImpl extends AbstractMockDatabaseMod
     this.databases = databases;
   }
 
-  @Override
-  public ModelWithId create(Map<Enum, Object> fieldsMap) throws IOException {
+   public ModelWithId create(Map<Enum, Object> fieldsMap) throws IOException {
     int group_id = (Integer) fieldsMap.get(GroupsPerson._Fields.group_id);
     int person_id = (Integer) fieldsMap.get(GroupsPerson._Fields.person_id);
     return create(group_id, person_id);
