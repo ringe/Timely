@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Map;
 
-import org.jvyamlb.YAML;
+import org.jvyaml.YAML;
 
 import com.rapleaf.jack.BaseDatabaseConnection;
 import com.rapleaf.jack.DatabaseConnection;
