@@ -1,12 +1,18 @@
 development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: dev
+  adapter: sqlite3
+  database: db/test.sqlite3
   pool: 5
-  username: dev
-  password: timelydev
-  host: sql.guiltyspark.net
+  timeout: 5000
+
+#development:
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  database: dev
+#  pool: 5
+#  username: dev
+#  password: timelydev
+#  host: sql.guiltyspark.net
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
