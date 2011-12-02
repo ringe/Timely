@@ -2,19 +2,19 @@ Feature: Import
 	To keep the database up to date
 	As a time planner
 	I should be able to import data from csv files retrieved from FS
+			
+	Scenario: Import Students
+		Given the file "spec/import/STUDENTTABELL_FS.csv"
+		When I read the contents of the file
+		And I convert the content to Students
+		Then I should have 3 students
 	
 	Scenario:	Import Rooms
 		Given the file "spec/import/ROMTABELL.csv"
 		When I read the contents of the file
 		And I convert the content to rooms
 		Then I should have 3 rooms
-		
-	Scenario: Import Students
-		Given the file "spec/import/STUDENTTABELL_FS.csv"
-		When I read the contents of the file
-		And I convert the content to Students
-		Then I should have 3 students
-		
+	
 	Scenario: Assign Acessories to Rooms
 		Given the file "spec/import/ROMUTSTYR.csv"
 		When i extract the Rooms from the file
@@ -34,8 +34,12 @@ Feature: Import
 		Then I should have 3 Classes
 		
 	Scenario: Assign Students to Groups
+		Given the file "spec/import/STUDENTTABELL_FS.csv"
+		When I read the contents of the file
+		And I convert the content to Students
+		Then I should have 3 students
+		
 		Given the file "spec/import/KLASSESTUDENTER.csv"
 		When I read the contents of the file
 		And I assign Students to Groups
 		Then I should have 1 different Student in 3 Groups
-		

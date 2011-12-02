@@ -10,7 +10,7 @@ Given /^the file "([^"]*)"$/ do |file|
 end
 
 When /^I read the contents of the file$/ do
-  #Unødvendig.
+  #Unï¿½dvendig.
 end
 
 When /^I convert the content to rooms$/ do
@@ -132,16 +132,28 @@ When /^I assign Students to Groups$/ do
       #SKIPZ!
     else
       n = 0
-      group = Group.where(id: row[0])
+      group = Group.new
+      group.name = row[0]
       while n < row[1].to_i
-        gp = Student.where(id: row[n+1].to_i);
+        gp = Student.where(id: row[n+2].to_i).first
         gp.groups << group
         n += 1
+        gp.save!
       end
+      group.save!
     end
   end
 end
 
 Then /^I should have (\d+) different Student in (\d+) Groups$/ do |students, groups|
-  pending
+  @done = false
+  @counts = 0
+  look = Group.find(:all)
+  look.each do |g|
+    @counts += g.people.count
+  end
+  if @counts == 3 && Group.count == 3
+    @done = true
+  end
+  assert @done
 end
