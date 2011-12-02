@@ -9,10 +9,6 @@ Given /^the file "([^"]*)"$/ do |file|
   assert File.exist?(@file);
 end
 
-When /^I read the contents of the file$/ do
-  #Un�dvendig.
-end
-
 When /^I convert the content to rooms$/ do
     CSV.foreach(@file, :col_sep => ";") do |row|
       if row[0] == "rom_id"
@@ -77,16 +73,8 @@ When /^i extract the Rooms from the file$/ do
   end
 end
 
-When /^i assign Accessories to the correct Rooms$/ do
-  # Already donsies!
-end
-
 Then /^I should have (\d+) Rooms with Accessories$/ do |k|
   assert Accessory.count.should == k.to_i
-end
-
-When /^I read the contents of Teachers$/ do
-  #not necesary?
 end
 
 When /^I convert the content to Teachers$/ do
