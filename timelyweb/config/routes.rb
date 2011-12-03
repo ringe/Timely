@@ -1,11 +1,13 @@
 Timelyweb::Application.routes.draw do
+  devise_for :users
+
+  get "sessions/index"
+
   get "students/index"
   match "students" => "students#index"
   match "schedule" => "events#index"
 
   get "events/index"
-
-  devise_for :people
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
