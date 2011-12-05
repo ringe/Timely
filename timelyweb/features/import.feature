@@ -36,3 +36,8 @@ Feature: Import
 		Given the file "spec/import/KLASSESTUDENTER.csv"
 		And I assign Students to Groups
 		Then I should have 1 different Student in 3 Groups
+		
+	Scenario: Assign Groups to Subjects
+		Given the file "spec/import/KLASSEEMNER.csv"
+		Then all Groups will be assigned to Subjects
+		And i should have 3 Groups in 1 Subject
