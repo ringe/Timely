@@ -1,8 +1,8 @@
 require 'factory_girl'
 
-Factory.define :student do |u|
-  u.firstname 'Test'
-  u.lastname 'User'
+Factory.define :user do |u|
+  u.name 'Test User'
   u.email 'user@test.com'
+  u.password 'please'
 end
 
